@@ -1,182 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For Tanisha 🤍</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Tanisha 🤍</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", system-ui, -apple-system, sans-serif;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",system-ui,-apple-system,sans-serif;
+}
 
-    body {
-      height: 100vh;
-      background: radial-gradient(circle at top, #fff0f5, #fdfbfb, #ebedee);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
+body{
+  height:100vh;
+  background:linear-gradient(180deg,#ffd6e7,#ffeaf3,#fff);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
 
-    /* floating hearts */
-    .heart {
-      position: absolute;
-      color: rgba(255, 182, 193, 0.6);
-      font-size: 18px;
-      animation: float 8s linear infinite;
-    }
+/* floating hearts */
+.heart{
+  position:absolute;
+  font-size:60px;
+  color:rgba(255,255,255,0.7);
+  animation:float 12s linear infinite;
+}
 
-    @keyframes float {
-      from { transform: translateY(100vh) scale(0.8); opacity: 0; }
-      to { transform: translateY(-10vh) scale(1.2); opacity: 1; }
-    }
+@keyframes float{
+  from{transform:translateY(110vh) scale(0.8);opacity:0;}
+  to{transform:translateY(-10vh) scale(1.2);opacity:1;}
+}
 
-    .container {
-      max-width: 420px;
-      padding: 35px;
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-      animation: fade 0.8s ease;
-      z-index: 2;
-    }
+/* container */
+.container{
+  width:90%;
+  max-width:430px;
+  padding:35px;
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(12px);
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,0.12);
+  animation:fadeIn .8s ease;
+  z-index:2;
+}
 
-    h1 {
-      font-size: 1.7rem;
-      margin-bottom: 18px;
-      color: #222;
-    }
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(25px);}
+  to{opacity:1;transform:translateY(0);}
+}
 
-    p {
-      font-size: 1rem;
-      line-height: 1.75;
-      color: #444;
-    }
+h1{
+  font-size:1.7rem;
+  margin-bottom:18px;
+  color:#222;
+}
 
-    button {
-      margin-top: 26px;
-      padding: 12px 28px;
-      border-radius: 30px;
-      border: none;
-      background: linear-gradient(135deg, #111, #333);
-      color: #fff;
-      cursor: pointer;
-      font-size: 0.95rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
+p{
+  font-size:1rem;
+  line-height:1.75;
+  color:#444;
+}
 
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-    }
+/* buttons */
+button{
+  margin-top:26px;
+  padding:14px 32px;
+  border:none;
+  border-radius:30px;
+  background:#111;
+  color:#fff;
+  font-size:1rem;
+  cursor:pointer;
+  transition:transform .15s ease,box-shadow .15s ease;
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
 
-    .btn-group button {
-      margin: 8px;
-    }
+button:active{
+  transform:scale(0.95);
+}
 
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* sorry blocks */
+.block{
+  width:100%;
+  padding:20px;
+  margin:14px 0;
+  background:#ffe6f1;
+  border-radius:18px;
+  font-size:1.3rem;
+  font-weight:600;
+  color:#333;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  transition:transform .12s ease,background .3s ease;
+}
 
-    /* music button */
-    .music-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #fff;
-      border-radius: 50%;
-      width: 46px;
-      height: 46px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      cursor: pointer;
-      font-size: 18px;
-      z-index: 3;
-    }
-  </style>
+.block:active{
+  transform:scale(0.94);
+}
+
+.block.open{
+  background:#fff;
+}
+
+/* lock screen */
+.lock{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,#ffb6d5,#ffd6e7);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:5;
+  text-align:center;
+  color:#fff;
+}
+
+.lock h1{
+  color:#fff;
+  margin-bottom:10px;
+}
+
+.lock p{
+  color:#fff;
+  opacity:.9;
+}
+
+/* music button */
+.music{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:20px;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
+  z-index:4;
+}
+</style>
 </head>
 
 <body>
 
-<!-- floating hearts -->
+<!-- Hearts -->
 <script>
-  for (let i = 0; i < 18; i++) {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.innerHTML = "🤍";
-    h.style.left = Math.random() * 100 + "vw";
-    h.style.animationDelay = Math.random() * 8 + "s";
-    document.body.appendChild(h);
-  }
+for(let i=0;i<16;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="🤍";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDelay=Math.random()*10+"s";
+  document.body.appendChild(h);
+}
 </script>
+
+<!-- Lock Screen -->
+<div class="lock" onclick="unlock()">
+  <h1>🔒 Tap to unlock</h1>
+  <p>For Tanisha 🤍</p>
+</div>
 
 <div class="container" id="page"></div>
 
-<div class="music-btn" onclick="toggleMusic()">🎵</div>
+<div class="music" onclick="toggleMusic()">🎵</div>
 <audio id="music" loop>
   <source src="https://cdn.pixabay.com/audio/2023/03/28/audio_1b6b5bbd47.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-  const page = document.getElementById("page");
+const page=document.getElementById("page");
+const music=document.getElementById("music");
+let playing=false;
 
-  const pages = [
-    `<h1>Hey Tanisha…<br>can I ask you something? 🤍</h1>
-     <button onclick="next()">Yes ❤️</button>`,
+function toggleMusic(){
+  if(!playing){music.play();}else{music.pause();}
+  playing=!playing;
+}
 
-    `<h1>Do you know how special you are to me?</h1>
-     <div class="btn-group">
-       <button onclick="next()">Yes</button>
-       <button onclick="next()">Tell me 🥺</button>
-     </div>`,
+function unlock(){
+  document.querySelector(".lock").style.display="none";
+  music.play();
+  playing=true;
+}
 
-    `<h1>Before you go ahead…</h1>
-     <p>I just want you to know one thing.</p>
-     <button onclick="next()">Continue ✨</button>`,
+const pages=[
+`<h1>Hey Tanisha…<br>can I say you something dil se 🤍</h1>
+<button onclick="next()">Yes ❤️</button>`,
 
-    `<h1>Some feelings are hard to say out loud…</h1>
-     <p>So I wrote this instead 🌙</p>
-     <button onclick="next()">Read 💌</button>`,
+`<h1>This is i wanna say</h1>
+<div class="block" onclick="openBlock(this,'I')">Tap me 🤍</div>
+<div class="block" onclick="openBlock(this,'Am')">Tap me 🤍</div>
+<div class="block" onclick="openBlock(this,'Sorry')">Tap me 🤍</div>
+<div class="block" onclick="openBlock(this,'🤍')">Tap me 🤍</div>
+<button onclick="next()">Continue ✨</button>`,
 
-    `<p>
-      Hi babe 🤍<br><br>
-      I don’t know what happened today, but I really missed you. When you didn’t reply, it hurt a little — but it’s okay. We’re meeting tomorrow anyway 🌙<br><br>
-      I love you so much that I end up missing you all the time. I genuinely want to go on a date with you, but I don’t want to rush things and spoil it. Please try to understand me a little too, baby 🥺✨<br><br>
-      I don’t say “I love you” very often — not because I don’t feel it, but because I believe those words lose their meaning if said carelessly.<br><br>
-      You once asked me what makes you different from others… honestly, everything. And that’s why I love you 🤍<br><br>
-      Being with you that night, eating together, even that drink you ordered 😅 — all of it felt special. You looked really pretty… just like always ✨<br><br>
-      <strong>Oye, I love you 🤍</strong><br><br>
-      — <strong>Sujal</strong>
-    </p>`
-  ];
+`<p>
+I thought of adding pages<br>
+about your cuteness,<br>
+your beauty,<br>
+how attractive you are…<br><br>
+but then I realised —<br>
+<strong>percentages and numbers<br>can’t define that.</strong> 🤍
+</p>
+<button onclick="next()">Continue ✨</button>`,
 
-  let i = 0;
-  function next() {
-    i++;
-    page.innerHTML = pages[i];
-  }
-  page.innerHTML = pages[0];
+`<p>
+Some things are hard to explain in person…<br>
+so I wrote this instead.
+</p>
+<button onclick="next()">Read 💌</button>`,
 
-  const music = document.getElementById("music");
-  let playing = false;
-  function toggleMusic() {
-    if (!playing) {
-      music.play();
-    } else {
-      music.pause();
-    }
-    playing = !playing;
-  }
+`<p>
+Hi babe 🤍<br><br>
+I don’t know what happened yesterday, but it felt like it was already written.
+I had this instinct from day one, and I don’t even know whose mistake it was.<br><br>
+I genuinely wanted to meet and tried, but everything got messed up because of time,
+calls, and people. When I saw that story about not getting priority, it hurt —
+because that’s not true. That line would have made sense if your plan was at 6 pm
+and I cancelled to go with someone else… but that didn’t happen.<br><br>
+I’m really sorry that everything got spoiled. I think somewhere you also knew it
+might — I don’t know why — but I genuinely feel very bad and sad.
+I love you so much that I end up missing you all the time 🤍<br><br>
+You once asked me what makes you different from others… honestly, everything.
+And that’s exactly why I love you.<br><br>
+Being with you at night, eating together, even that drink you ordered 😅 —
+all of it felt special. Even when you get upset, it’s somehow attractive.
+And you looked really pretty yesterday too… just like always ✨<br><br>
+<strong>Oye… I love you 🤍</strong><br><br>
+— Sujal
+</p>`
+];
+
+let i=0;
+function next(){
+  i++;
+  page.innerHTML=pages[i];
+}
+
+function openBlock(el,text){
+  if(el.classList.contains("open"))return;
+  el.classList.add("open");
+  el.innerHTML=text;
+}
+
+page.innerHTML=pages[0];
 </script>
 
 </body>
