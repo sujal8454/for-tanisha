@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>For Tanisha 🤍</title>
 
   <style>
@@ -10,44 +10,71 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: "Poppins", system-ui, -apple-system, sans-serif;
     }
 
     body {
       height: 100vh;
-      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      background: radial-gradient(circle at top, #fff0f5, #fdfbfb, #ebedee);
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+    }
+
+    /* floating hearts */
+    .heart {
+      position: absolute;
+      color: rgba(255, 182, 193, 0.6);
+      font-size: 18px;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh) scale(0.8); opacity: 0; }
+      to { transform: translateY(-10vh) scale(1.2); opacity: 1; }
     }
 
     .container {
       max-width: 420px;
-      padding: 30px;
+      padding: 35px;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
       text-align: center;
-      animation: fade 0.6s ease;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      animation: fade 0.8s ease;
+      z-index: 2;
     }
 
     h1 {
-      font-size: 1.6rem;
-      margin-bottom: 20px;
+      font-size: 1.7rem;
+      margin-bottom: 18px;
       color: #222;
     }
 
     p {
       font-size: 1rem;
-      line-height: 1.7;
+      line-height: 1.75;
       color: #444;
     }
 
     button {
-      margin-top: 25px;
-      padding: 12px 26px;
-      border-radius: 25px;
+      margin-top: 26px;
+      padding: 12px 28px;
+      border-radius: 30px;
       border: none;
-      background: #111;
+      background: linear-gradient(135deg, #111, #333);
       color: #fff;
       cursor: pointer;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
     }
 
     .btn-group button {
@@ -55,57 +82,102 @@
     }
 
     @keyframes fade {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* music button */
+    .music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #fff;
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      cursor: pointer;
+      font-size: 18px;
+      z-index: 3;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container" id="page"></div>
+<!-- floating hearts -->
+<script>
+  for (let i = 0; i < 18; i++) {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "🤍";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDelay = Math.random() * 8 + "s";
+    document.body.appendChild(h);
+  }
+</script>
 
-  <script>
-    const page = document.getElementById("page");
+<div class="container" id="page"></div>
 
-    const pages = [
-      `<h1>Hey Tanisha…<br>can I ask you something? 🤍</h1>
-       <button onclick="next()">Yes ❤️</button>`,
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2023/03/28/audio_1b6b5bbd47.mp3" type="audio/mpeg">
+</audio>
 
-      `<h1>Do you know how special you are to me?</h1>
-       <div class="btn-group">
-         <button onclick="next()">Yes</button>
-         <button onclick="next()">Tell me 🥺</button>
-       </div>`,
+<script>
+  const page = document.getElementById("page");
 
-      `<h1>Before you go ahead…</h1>
-       <p>I just want you to know one thing.</p>
-       <button onclick="next()">Continue ✨</button>`,
+  const pages = [
+    `<h1>Hey Tanisha…<br>can I ask you something? 🤍</h1>
+     <button onclick="next()">Yes ❤️</button>`,
 
-      `<h1>Some feelings are hard to say out loud…</h1>
-       <p>So I wrote this instead 🌙</p>
-       <button onclick="next()">Read 💌</button>`,
+    `<h1>Do you know how special you are to me?</h1>
+     <div class="btn-group">
+       <button onclick="next()">Yes</button>
+       <button onclick="next()">Tell me 🥺</button>
+     </div>`,
 
-      `<p>
-        Hi babe 🤍<br><br>
-        I don’t know what happened today, but I really missed you. When you didn’t reply, it hurt a little — but it’s okay. We’re meeting tomorrow anyway 🌙<br><br>
-        I love you so much that I end up missing you all the time. I genuinely want to go on a date with you, but I don’t want to rush things and spoil it. Please try to understand me a little too, baby 🥺✨<br><br>
-        I don’t say “I love you” very often — not because I don’t feel it, but because I believe those words lose their meaning if said carelessly.<br><br>
-        You once asked me what makes you different from others… honestly, everything. And that’s why I love you 🤍<br><br>
-        Being with you that night, eating together, even that drink you ordered 😅 — all of it felt special. You looked really pretty… just like always ✨<br><br>
-        <strong>Oye, I love you 🤍</strong><br><br>
-        — <strong>Sujal</strong>
-      </p>`
-    ];
+    `<h1>Before you go ahead…</h1>
+     <p>I just want you to know one thing.</p>
+     <button onclick="next()">Continue ✨</button>`,
 
-    let i = 0;
-    function next() {
-      i++;
-      page.innerHTML = pages[i];
+    `<h1>Some feelings are hard to say out loud…</h1>
+     <p>So I wrote this instead 🌙</p>
+     <button onclick="next()">Read 💌</button>`,
+
+    `<p>
+      Hi babe 🤍<br><br>
+      I don’t know what happened today, but I really missed you. When you didn’t reply, it hurt a little — but it’s okay. We’re meeting tomorrow anyway 🌙<br><br>
+      I love you so much that I end up missing you all the time. I genuinely want to go on a date with you, but I don’t want to rush things and spoil it. Please try to understand me a little too, baby 🥺✨<br><br>
+      I don’t say “I love you” very often — not because I don’t feel it, but because I believe those words lose their meaning if said carelessly.<br><br>
+      You once asked me what makes you different from others… honestly, everything. And that’s why I love you 🤍<br><br>
+      Being with you that night, eating together, even that drink you ordered 😅 — all of it felt special. You looked really pretty… just like always ✨<br><br>
+      <strong>Oye, I love you 🤍</strong><br><br>
+      — <strong>Sujal</strong>
+    </p>`
+  ];
+
+  let i = 0;
+  function next() {
+    i++;
+    page.innerHTML = pages[i];
+  }
+  page.innerHTML = pages[0];
+
+  const music = document.getElementById("music");
+  let playing = false;
+  function toggleMusic() {
+    if (!playing) {
+      music.play();
+    } else {
+      music.pause();
     }
-
-    page.innerHTML = pages[0];
-  </script>
+    playing = !playing;
+  }
+</script>
 
 </body>
 </html>
